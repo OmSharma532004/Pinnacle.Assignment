@@ -38,24 +38,24 @@ const SearchCVs = ({ onSearch }) => {
 <nav className="mx-auto">
             <Navbar />
           </nav>
-      <div className="flex w-full justify-center bg-gray-500 items-center h-screen">
+      <div className=" w-full justify-center bg-zinc-900 h-screen">
       
-        <div className="p-4 bg-gray-100 rounded-md shadow-md max-w-md w-full">
+        <div className="p-4 bg-zinc-900 text-yellow-300  shadow-md max-w-full w-full">
         
-          <div className="flex items-center mb-4">
+          <div className="flex justify-center  items-center mb-4">
             <label htmlFor="field" className="mr-2">Search by:</label>
             <select
               id="field"
               value={field}
               onChange={(e) => setField(e.target.value)}
-              className="border border-gray-300 rounded-md px-2 py-1"
+              className="border text-black border-gray-300 rounded-md px-2 py-1"
             >
               <option value="name">Name</option>
               <option value="role">Role</option>
               <option value="skills">Skills</option>
             </select>
           </div>
-          <div className="flex items-center">
+          <div className="flex text-black items-center">
             <input
               type="text"
               value={keywords}
@@ -72,7 +72,7 @@ const SearchCVs = ({ onSearch }) => {
           </div>
           <div>
             {cvs.length > 0 ? (
-              <div className="grid grid-cols-1 gap-4 mt-4">
+              <div className="grid text-black grid-cols-1 gap-4 mt-4">
                 {cvs.map((cv, index) => (
                   <div key={index} className="bg-white rounded-md shadow-md p-4">
                     <h3 className="text-xl font-semibold">{cv.name}</h3>

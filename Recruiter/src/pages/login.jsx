@@ -36,13 +36,13 @@ export default function SignInForm() {
 
     try {
    
-      const response = await fetch(`${apiUrl}/admin/login`, {
+      const response = await fetch(`${apiUrl}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
-        credentials: "include",
+  
       });
 
       if (response.ok) {
@@ -51,7 +51,7 @@ export default function SignInForm() {
        
         localStorage.setItem("token", JSON.stringify(data.token))
         localStorage.setItem("user", JSON.stringify(data.user))
-       
+       window.location.href = "/Home";
       
       
       } else {

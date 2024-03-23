@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import CreatedQuizes from "../components/createdQuizes";
+
 import {
   Drawer,
   DrawerClose,
@@ -29,6 +29,7 @@ const Home = () => {
     getAllCVS();
     console.log("All CVs:", allCvs);
   }, []);
+  const [selectedCV, setSelectedCV] = useState(null);
 
   const [allCvs, setAllCvs] = useState([]);
   const getAllCVS = async () => {
@@ -46,51 +47,49 @@ const Home = () => {
   const { user } = useSelector((state) => state.profile);
 
   return (
-    <div className="w-screen min-h-screen bg-black">
-      <div className="w-screen overflow-scroll flex flex-col items-center justify-center h-screen">
-        <div className="w-[100%] h-[100%] bg-black text-white">
+    <div className="w-screen min-h-screen bg-white">
+      <div className="w-screenflex flex-col items-center justify-center h-screen">
+        <div className="w-[100%]  h-[100%] bg-white text-black">
           <nav className="mx-auto">
-            <Navbar />
+          <Navbar />
           </nav>
           {user ? (
             <>
               <div className="flex flex-col  items-center justify-center overflow-scroll min-h-[100%]  w-[100%]">
-                <div className="z-10 mx-auto flex flex-col items-center justify-around w-full h-full overflow-scroll gap-2">
-                  <h1 className="text-3xl">You Can Go Through The CVs</h1>
-                  <div className="flex flex-col gap-[50px]items-center justify-center ">
+                <div className="z-10 mx-auto flex flex items-center justify-between w-full h-full overflow-scroll">
+                
+                 <div className=" bg-white w-[30%] border-r-2 flex h-screen items-center justify-center">
+                 <div  className="flex flex-col max-h-[800px] overflow-auto p-6 rounded-xl bg-white">
                     {allCvs.length > 0 ? (
-                      <div className="flex flex-col items-center justify-center gap-2">
+                      <div className="flex flex-col gap-[20px]">
                         {allCvs.map((cv, index) => (
-                          <div key={index} className="w-full overflow-x-auto">
-                            <Drawer className="w-full">
-                              <DrawerTrigger>
-                                <div className="flex flex-row w-[400px] bg-white text-black rounded-xl p-4 items-center justify-between gap-2">
+                          <div onClick={()=>{
+                            setSelectedCV(cv);
+                          }} key={index} className="w-full overflow-x-auto">
+                           <div className="flex flex-row w-[350px]  text-black hover:bg-black  border-2 border-dotted  rounded-xl p-6 hover:border-yellow-400 hover:text-yellow-400 items-center justify-between gap-2">
                                   <h3 className="text-xl">{cv.name}</h3>
                                   <p>{cv.role}</p>
                                 </div>
-                              </DrawerTrigger>
-                              <DrawerContent>
-                                <DrawerHeader>
-                                  <DrawerTitle>Candidate Details</DrawerTitle>
-                                </DrawerHeader>
-                                <DrawerDescription>
-                                  <div className="max-h-[600px] overflow-y-auto">
-                                    <CandidateDetails cv={cv} />
-                                  </div>
-                                </DrawerDescription>
-                                <DrawerFooter>
-                                  <DrawerClose>
-                                    <Button variant="outline">Close</Button>
-                                  </DrawerClose>
-                                </DrawerFooter>
-                              </DrawerContent>
-                            </Drawer>
                           </div>
                         ))}
                       </div>
                     ) : (
                       <p>No CVs found</p>
                     )}
+                  </div>
+                 
+                 </div>
+                 <div className="min-w-[70%] bg-white overflow-scroll   h-[100%]">
+                    {
+                      selectedCV ? (
+                        <CandidateDetails cv={selectedCV} />
+                      ) : (
+                        <div className="flex flex-col items-center justify-center">
+                          <h1 className="text-3xl">Welcome to CV App</h1>
+                          <p className="text-lg">Please select a candidate to view details</p>
+                        </div>
+                      )
+                    }
                   </div>
                 </div>
               </div>
@@ -99,7 +98,7 @@ const Home = () => {
             <div className="flex flex-col h-[100%] items-center justify-center w-[100%]">
               <div className="z-10 mx-auto flex flex-col h-[100%] items-center justify-around w-[100%] gap-2">
                 <div className="flex flex-col items-center justify-center gap-2">
-                  <h1 className="text-3xl">Welcome to Quiz App</h1>
+                  <h1 className="text-3xl">Welcome to CV App</h1>
                   <p className="text-lg">Please login to continue</p>
                   <Button
                     onClick={() => {
