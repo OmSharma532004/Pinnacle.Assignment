@@ -50,3 +50,9 @@ This project aims to create a database capturing program for Pinnacle, a recruit
    - Conduct thorough testing, including unit tests for backend APIs and UI tests for frontend components.
    - Deploy the application on hosting platforms like Heroku for demonstration and production use.
 
+#Getting Started
+1. Clone the Repository
+2. npm install in each folder
+3. nodemon index.js for Backend.Pinnacle
+4. npm run dev for Recruiter Interface
+5. npm run start for User Interface 
