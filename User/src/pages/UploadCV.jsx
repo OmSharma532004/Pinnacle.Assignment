@@ -32,6 +32,7 @@ const apiUrl = 'http://localhost:4000'; // Backend API URL
       const data = await response.json();
 
       console.log(data); // Log the response
+      alert('CV uploaded successfully'); // Show success message
     } catch (error) {
       console.error('Error uploading CV:', error);
     }

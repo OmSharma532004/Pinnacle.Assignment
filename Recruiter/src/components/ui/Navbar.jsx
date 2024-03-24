@@ -38,19 +38,19 @@ const apiUrl = "http://localhost:4000";
   return (
     <nav className="bg-black py-4">
       <div className="container mx-auto flex justify-between items-center">
-        <Link to="/home" className="text-white hover:text-yellow-400 text-lg font-semibold">
+        <Link to="/" className="text-white hover:text-yellow-400 text-lg font-semibold">
           Home
         </Link>
         <ul className="flex space-x-4">
           {!user ? (
             <>
               <li>
-                <Link to="/login" className="text-white hover:text-yellow-400 ">
+                <Link to="/auth/login" className="text-white hover:text-yellow-400 ">
                   Login
                 </Link>
               </li>
               <li>
-                <Link to="/signup" className="text-white hover:text-yellow-400 ">
+                <Link to="/auth/signup" className="text-white hover:text-yellow-400 ">
                   Signup
                 </Link>
               </li>
