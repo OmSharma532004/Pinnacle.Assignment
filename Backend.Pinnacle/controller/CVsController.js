@@ -4,7 +4,7 @@ exports.uploadCV = async (req, res) => {
   try {
     const { name, role, description, skills, experience, education } = req.body;
 
-    if (!name || !role || !skills || !experience || !education) {
+    if (!name || !role || !skills ) {
       return res.status(400).json({ error: 'Please provide all required fields' });
     }
 
